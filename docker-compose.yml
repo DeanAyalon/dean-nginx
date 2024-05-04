@@ -1,0 +1,11 @@
+name: dean
+services:
+  nginx: 
+    container_name: dean-nginx
+    image: nginx
+    ports:
+      - 443:443
+      - ${HTTP_PORT:-80}:80
+    volumes:
+      - ./conf:/etc/nginx/conf.d:ro
+      - ${CERTS}:/etc/nginx/ssl:ro
