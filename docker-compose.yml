@@ -1,6 +1,7 @@
 name: dean
 services:
   nginx: 
+    container_name: dean-nginx
     image: nginx
     ports:
       - 443:443
