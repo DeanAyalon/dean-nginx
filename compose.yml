@@ -1,11 +1,28 @@
-name: dean
+name: dean-server
 services:
   nginx: 
+    profiles:
+      - live
     container_name: dean-nginx
     image: nginx
     ports:
+      - 80:80
       - 443:443
-      - ${NGINX_HTTP_PORT:-80}:80
     volumes:
       - ./conf:/etc/nginx/conf.d:ro
-      - ${ALL_CERTS:-./certs/}:/etc/nginx/ssl:ro
+      - ${CERTS:-./certs/}:/etc/nginx/ssl:ro
+  
+  nginx-dev:
+    profiles:
+      - dev
+    image: nginxproxy/nginx-proxy:1.5
+    container_name: dean-nginx-dev
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ${CERTS_DEV}:/etc/nginx/certs:ro
+    restart: unless-stopped
+    # environment:
+    #   - DEFAULT_ROOT=301 https://google.com   # Not working?
