@@ -4,3 +4,8 @@
 
 # in-repo mounts
 certs
+## nginx-proxy-manager
+letsencrypt
+data/*
+!data/nginx
+!data/database.sqlite

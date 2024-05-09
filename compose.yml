@@ -10,10 +10,24 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ${CERTS}:/etc/nginx/certs:ro
+      - ${CERTS:-./certs}:/etc/nginx/certs:ro
     restart: unless-stopped
     # environment:
     #   - DEFAULT_ROOT=301 https://google.com   # Not working?
+
+  nginx-dev:
+    image: 'docker.io/jc21/nginx-proxy-manager:latest'
+    container_name: dean-nginx-dev
+    profiles:
+      - dev
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
 
 
 
