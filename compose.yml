@@ -10,12 +10,36 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./conf/live/proxy.conf:/etc/nginx/proxy.conf:ro
+      # - ./conf/live/proxy.conf:/etc/nginx/proxy.conf:ro
       - ${CERTS}:/etc/nginx/certs:ro
     restart: unless-stopped
     # environment:
     #   - DEFAULT_ROOT=301 https://google.com   # Not working?
 
+
+  nginx-dev:
+    profiles:
+      - dev
+    image: nginxproxy/nginx-proxy:1.5
+    container_name: dean-nginx-dev
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./conf/live/app.conf:/etc/nginx/conf.d/app.conf:ro
+      # - ./conf/live/proxy.conf:/etc/nginx/proxy.conf:ro
+      - ${CERTS}:/etc/nginx/certs:ro
+    restart: unless-stopped
+
+  # dummyweb:
+  #   profiles:
+  #     - dev
+  #   image: alpine
+  #   restart: always
+  #   command: tail -f /dev/null
+  #   environment:
+  #     VIRTUAL_HOST: filemaker.example.com
 
 
   # Old manual configuration
