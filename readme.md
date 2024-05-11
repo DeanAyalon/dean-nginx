@@ -12,12 +12,13 @@ The latest version of this repository uses [nginx-proxy](https://github.com/ngin
 ### Containers
 Containers need to be set up with the following environment variable for nginx-proxy to route to them:
 - `VIRTUAL_HOST` with the value as the full domain to assign that service
-> ex. VIRTUAL_HOST=verdaccio.deanayalon.com
+> ex. `VIRTUAL_HOST=verdaccio.deanayalon.com`
 
 
 # Legacy
-## v1
-Version 1 uses a raw nginx image and a manual configuration file
+The legacy version uses a raw nginx image and a manual configuration file, which is **not** up to date with current server configuration.
+
+**Currently, the legacy version is DEPRECATED.** Development will continue if nginx-proxy is ever abandoned, for any reason. and a manual configuration is necessary.<br>
 
 ### Setup
 #### Certificates
@@ -32,6 +33,4 @@ The configuration is currently set up to reverse-proxy:
 - verdaccio-dev
 - filemaker
 
-For any changes, modify the [configuration file](./v1/conf/app.conf)
-
-**Currently, v1 is DEPRECATED, development will continue if nginx-proxy proves problematic**
+For any changes, modify the [configuration file](./legacy/conf/app.conf)
