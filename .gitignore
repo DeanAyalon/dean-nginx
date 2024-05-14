@@ -3,4 +3,4 @@
 !template.env
 
 # in-repo mounts
-certs
+mounts
