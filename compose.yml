@@ -12,9 +12,11 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./conf/live/app.conf:/etc/nginx/conf.d/app.conf:ro
       - ${CERTS}:/etc/nginx/certs:ro
+      - ./public:/public:ro           # To serve files, the directory and files must have execute permissions
     restart: unless-stopped
     # environment:
     #   - DEFAULT_ROOT=301 https://google.com   # Not working?
+    
 
   # Legacy version - Manual nginx configuration
   nginx-legacy: 
