@@ -1,3 +1,4 @@
+name: dean-server
 services:  
   # Container now based on nginx-proxy
   nginx:
@@ -12,6 +13,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./conf/live/app.conf:/etc/nginx/conf.d/app.conf:ro
       - ${CERTS}:/etc/nginx/certs:ro
+      - ./logs:/var/log/nginx
       - ./public:/public:ro           # To serve files, the directory and files must have execute permissions
     restart: unless-stopped
     # environment:
