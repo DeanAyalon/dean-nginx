@@ -12,13 +12,35 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./conf/live/app.conf:/etc/nginx/conf.d/app.conf:ro
-      - ${CERTS}:/etc/nginx/certs:ro
-      - ./logs:/var/log/nginx
-      - ./public:/public:ro           # To serve files, the directory and files must have execute permissions
+      - ${CERTS:-./mounts/certs}:/etc/nginx/certs:ro
+      - ./public:/public:ro                       # To serve files, the directory and files must have execute permissions
+      - ./mounts/logs:/var/log/nginx
+      - ./mounts/acme:/usr/share/nginx/html:ro    # The path nginx-proxy uses for certificate validation
     restart: unless-stopped
     # environment:
     #   - DEFAULT_ROOT=301 https://google.com   # Not working?
     
+
+  # Certbot - For manual certificate generation without taking the HTTP proxy down
+    # Using Let'sEncrypt 
+  certbot-test:
+    profiles:
+      - cert-test
+    extends: 
+      file: compose.certbot.yml
+      service: certbot
+    container_name: certbot-test
+    command: certonly --webroot --webroot-path /var/www/certbot/ --dry-run -m ${EMAIL} -d ${CERT_DOMAINS}
+
+  certbot:
+    profiles:
+      - cert
+    extends: 
+      file: compose.certbot.yml
+      service: certbot
+    container_name: certbot
+    command: certonly --webroot --webroot-path /var/www/certbot/ -m ${EMAIL} -d ${CERT_DOMAINS}
+
 
   # Legacy version - Manual nginx configuration
   nginx-legacy: 
@@ -31,4 +53,4 @@ services:
       - 443:443
     volumes:
       - ./conf/legacy:/etc/nginx/conf.d:ro
-      - ${CERTS_LEGACY:-./certs/}:/etc/nginx/ssl:ro
+      - ${CERTS_LEGACY:-./mounts/certs/}:/etc/nginx/ssl:ro

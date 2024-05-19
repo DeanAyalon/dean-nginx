@@ -1,0 +1,6 @@
+services:
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./mounts/acme:/var/www/certbot:rw
+      - ./mounts/certbot:/etc/letsencrypt:rw
