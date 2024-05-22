@@ -6,6 +6,7 @@ services:
       - live
     image: nginxproxy/nginx-proxy:1.5
     container_name: dean-nginx
+    hostname: dean-nginx
     ports:
       - 80:80
       - 443:443
@@ -30,6 +31,7 @@ services:
       file: compose.certbot.yml
       service: certbot
     container_name: certbot-test
+    hostname: certbot-test
     command: certonly --webroot --webroot-path /var/www/certbot/ --dry-run -m ${EMAIL} -d ${CERT_DOMAINS}
 
   certbot:
@@ -39,6 +41,7 @@ services:
       file: compose.certbot.yml
       service: certbot
     container_name: certbot
+    hostname: certbot
     command: certonly --webroot --webroot-path /var/www/certbot/ -m ${EMAIL} -d ${CERT_DOMAINS}
 
 
@@ -47,6 +50,7 @@ services:
     profiles:
       - legacy
     container_name: dean-nginx-legacy
+    hostname: dean-nginx-legacy
     image: nginx
     ports:
       - 80:80
