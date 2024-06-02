@@ -19,7 +19,7 @@ services:
       - ./mounts/acme:/usr/share/nginx/html:ro    # The path nginx-proxy uses for certificate validation
     restart: unless-stopped
     # environment:
-    #   - DEFAULT_ROOT=301 https://google.com   # Not working?
+    #   DEFAULT_ROOT: 301 https://google.com        # Not working?
     
 
   # Certbot - For manual certificate generation without taking the HTTP proxy down
