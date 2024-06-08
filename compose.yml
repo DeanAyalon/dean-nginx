@@ -4,7 +4,7 @@ services:
   nginx:
     profiles:
       - live
-    image: nginxproxy/nginx-proxy:1.5
+    image: nginxproxy/nginx-proxy:1.6
     container_name: dean-nginx
     hostname: dean-nginx
     ports:

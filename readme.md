@@ -56,5 +56,7 @@ For any changes, modify the [configuration file](./legacy/conf/app.conf)
 
 
 ## Featured Technologies
-[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/DeanAyalon/verdaccio/pkgs/container/verdaccio)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
 [![Nginx](https://img.shields.io/badge/nginx-009639.svg?style=for-the-badge&logo=nginx&logoColor=white)](https://npmjs.com)
+
+[nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)
