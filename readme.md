@@ -1,11 +1,12 @@
 # About
-This repository contains the configuration for the Nginx used as a proxy, running on my server.
+This repository contains the configuration for the Nginx used as a proxy, running on my server.<br>
+It is part of the [dean-server](https://github.com/DeanAyalon/dean-server) monorepo
 
-The latest version of this repository uses [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy), which, using environment variables, automatically assigns an http/s proxy to running Docker containers
+This repository uses [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy), which, using environment variables, automatically assigns an http/s proxy to running Docker containers
 
 # Use
 ## Setup
-## Requirements
+### Requirements
 - Docker Engine or Docker Desktop, with Docker Compose installed (Built in)
     - This repository uses the new `docker compose`, it is unknown how well it would work with legacy `docker-compose` versions
 
