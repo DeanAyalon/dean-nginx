@@ -17,6 +17,7 @@ services:
       - ./public:/public:ro                       # To serve files, the directory and files must have execute permissions
       - ./mounts/logs:/var/log/nginx
       - ./mounts/acme:/usr/share/nginx/html:ro    # The path nginx-proxy uses for certificate validation
+      - /etc/localtime:/etc/localtime:ro          # Sync time with host
     restart: unless-stopped
     # environment:
     #   DEFAULT_ROOT: 301 https://google.com        # Not working?
