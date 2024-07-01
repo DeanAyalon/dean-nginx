@@ -2,11 +2,12 @@ name: dean-server
 services:  
   # Container now based on nginx-proxy
   nginx:
-    profiles:
-      - live
     image: nginxproxy/nginx-proxy:1.6
     container_name: dean-nginx
     hostname: dean-nginx
+    profiles:
+      - live
+    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
@@ -18,7 +19,6 @@ services:
       - ./mounts/logs:/var/log/nginx
       - ./mounts/acme:/usr/share/nginx/html:ro    # The path nginx-proxy uses for certificate validation
       - /etc/localtime:/etc/localtime:ro          # Sync time with host
-    restart: unless-stopped
     # environment:
     #   DEFAULT_ROOT: 301 https://google.com        # Not working?
     
