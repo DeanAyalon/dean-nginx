@@ -33,7 +33,7 @@ services:
       service: certbot
     container_name: certbot-test
     hostname: certbot-test
-    command: certonly --webroot --webroot-path /var/www/certbot/ --dry-run -m ${EMAIL} -d ${CERT_DOMAINS}
+    command: certonly --webroot --webroot-path /var/www/certbot/ --dry-run -m $EMAIL -d $CERT_DOMAINS
 
   certbot:
     profiles:
@@ -43,7 +43,7 @@ services:
       service: certbot
     container_name: certbot
     hostname: certbot
-    command: certonly --webroot --webroot-path /var/www/certbot/ -m ${EMAIL} -d ${CERT_DOMAINS}
+    command: certonly --webroot --webroot-path /var/www/certbot/ -m $EMAIL -d $CERT_DOMAINS
 
 
   # Legacy version - Manual nginx configuration
