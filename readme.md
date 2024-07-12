@@ -32,29 +32,8 @@ Use: `docker compose --profile <profile> <command>`
 
 Profiles:
 * **live**: Production nginx, uses nginx-proxy to automatically set up reverse-proxy to containers
-* **legacy**: Legacy nginx, uses manual configuration, not updated or supported.
-
-# Legacy
-The legacy version uses a raw nginx image and a manual configuration file, which is **not** up to date with current server configuration.
-
-**Currently, the legacy version is DEPRECATED.** Development will continue if nginx-proxy is ever abandoned, for any reason. and a manual configuration is necessary.<br>
-
-### Setup
-#### Certificates
-The certificates are set up to be taken from the mount in the following path:
-> MOUNT/{hostname}/<br>
-    - fullpath.pem<br>
-    - privkey.pem
-
-#### Configuration
-The configuration is currently set up to reverse-proxy:
-- verdaccio
-- verdaccio-dev
-- filemaker
-
-For any changes, modify the [configuration file](./legacy/conf/app.conf)
-
-
+* **certs**: Spin up Certbot to request new certificates
+* **certs-test**: Spin up Certbot to simulate certificate requests
 
 ## Featured Technologies
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
