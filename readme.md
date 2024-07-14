@@ -36,7 +36,7 @@ Profiles:
 * **certs-test**: Spin up Certbot to simulate certificate requests
 
 ## Featured Technologies
-[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![Docker](https://img.shields.io/badge/docker-1D63ED.svg?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/repositories/deanayalon)
 [![Nginx](https://img.shields.io/badge/nginx-009639.svg?style=for-the-badge&logo=nginx&logoColor=white)](https://npmjs.com)
 
 [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)
