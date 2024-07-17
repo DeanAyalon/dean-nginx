@@ -37,5 +37,5 @@ Profiles:
 
 ## Featured Technologies
 [![Docker](https://img.shields.io/badge/docker-1D63ED?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/repository/docker/nginxproxy/nginx-proxy)
-[![Nginx](https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx)](https://npmjs.com)<br>
+[![Nginx](https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx)](https://nginx.com)<br>
 [![nginx-proxy](https://custom-icon-badges.demolab.com/badge/nginx--proxy-F0F0F0?style=for-the-badge&logo=nginx-proxy-identicon&logoColor=D4AB64)](https://github.com/nginx-proxy/nginx-proxy)
