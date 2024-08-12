@@ -13,12 +13,13 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./conf/app.conf:/etc/nginx/conf.d/app.conf:ro
+      - ./conf/app.conf:/etc/nginx/conf.d/app.conf:ro   # Override proxy configurations
+      # - ./conf/vhost.d:/etc/nginx/vhost.d:ro            # Override host configurations
       - ${CERTS:-./mounts/certs}:/etc/nginx/certs:ro
-      - ./public:/public:ro                       # To serve files, the directory and files must have execute permissions
+      - ./public:/public:ro                             # To serve files, the directory and files must have execute permissions
       - ./mounts/logs:/var/log/nginx
-      - ./mounts/acme:/usr/share/nginx/html:ro    # The path nginx-proxy uses for certificate validation
-      - /etc/localtime:/etc/localtime:ro          # Sync time with host
+      - ./mounts/acme:/usr/share/nginx/html:ro          # The path nginx-proxy uses for certificate validation
+      - /etc/localtime:/etc/localtime:ro                # Sync time with host
     # environment:
     #   DEFAULT_ROOT: 301 https://google.com        # Not working?
     

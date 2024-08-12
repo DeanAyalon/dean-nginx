@@ -4,4 +4,4 @@ services:
     volumes:
       - ./mounts/acme:/var/www/certbot:rw
       - ./mounts/certbot:/etc/letsencrypt:rw
-    entrypoint: certbot certonly --webroot --webroot-path /var/www/certbot/ -m $EMAIL -d $CERT_DOMAINS --agree-tos
+    entrypoint: certbot certonly -n --webroot --webroot-path /var/www/certbot/ -m $EMAIL -d $CERT_DOMAINS --agree-tos --expand
